@@ -52,7 +52,7 @@ st.markdown(
 )
 
 # Load dataset
-df_daily = pd.read_csv("Dashboard/main_data.csv")  # Sesuaikan lokasi file
+df_daily = pd.read_csv("https://raw.githubusercontent.com/anugerahsurya/ProjekDashboard-LaskarAI/refs/heads/main/Dashboard/main_data.csv")  # Sesuaikan lokasi file
 df_daily["datetime"] = pd.to_datetime(df_daily["datetime"])
 df_daily["year"] = df_daily["datetime"].dt.year 
 df_daily["month"] = df_daily["datetime"].dt.month
