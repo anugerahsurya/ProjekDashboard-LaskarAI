@@ -2,11 +2,11 @@ altair==5.3.0
 geopandas==0.14.4
 matplotlib==3.10.0
 matplotlib-inline==0.1.7
-numpy>=1.26.0
+numpy==1.26.0
 pandas==2.2.3
 pandas-flavor==0.6.0
 plotly==5.22.0
 plotly-resampler==0.10.0
-scipy==1.9.3
+scipy==1.11.4
 seaborn==0.13.2
-streamlit==1.37.0
+streamlit==1.39.0
