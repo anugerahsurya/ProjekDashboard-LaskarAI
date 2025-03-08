@@ -79,7 +79,7 @@ with st.sidebar:
     filtered_data["category"] = filtered_data["PM2.5"].apply(kategori_pm25)
 
 # Fungsi Plot Time Series
-def plot_time_series(data, station, datetime_col, value_col):
+def buatVisualisasiTS(data, station, datetime_col, value_col):
     station_data = data.copy()
 
     fig, axes = plt.subplots(2, 1, figsize=(10, 10))
@@ -115,7 +115,7 @@ def plot_time_series(data, station, datetime_col, value_col):
     st.pyplot(fig)
 
 # Fungsi Heatmap Interaktif
-def plot_pm25_heatmap(dataset, station, year, month):
+def buatHeatmap(dataset, station, year, month):
     dataset = dataset.copy()
     dataset["datetime"] = pd.to_datetime(dataset["datetime"])
     
@@ -159,9 +159,9 @@ col1, col2 = st.columns((3, 2))
 # Kolom 1 : Time Series
 with col1:
     st.markdown("<h3 style='text-align: center;'>Visualisasi Data Runtun Waktu</h3>", unsafe_allow_html=True)
-    plot_time_series(filtered_data, selected_station, "datetime", "PM2.5")
+    buatVisualisasiTS(filtered_data, selected_station, "datetime", "PM2.5")
 
 # Kolom 2 : Heatmap
 with col2:
     st.subheader(f"Sebaran PM2.5 di Stasiun {selected_station}")
-    plot_pm25_heatmap(filtered_data, selected_station, selected_year, selected_month_index)
+    buatHeatmap(filtered_data, selected_station, selected_year, selected_month_index)
