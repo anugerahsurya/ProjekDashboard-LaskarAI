@@ -113,6 +113,7 @@ def buatVisualisasiTS(data, station, datetime_col, value_col):
     ax_bar.grid(True)
 
     st.pyplot(fig)
+    return slope
 
 # Fungsi Heatmap Interaktif
 def buatHeatmap(dataset, station, year, month):
@@ -159,7 +160,25 @@ col1, col2 = st.columns((3, 2))
 # Kolom 1 : Time Series
 with col1:
     st.markdown("<h3 style='text-align: center;'>Visualisasi Data Runtun Waktu</h3>", unsafe_allow_html=True)
-    buatVisualisasiTS(filtered_data, selected_station, "datetime", "PM2.5")
+    slope = buatVisualisasiTS(filtered_data, selected_station, "datetime", "PM2.5")
+    # Tambahkan teks statis dalam box
+    if slope > 0 :
+        kondisi = "Peningkatan"
+    else:
+        kondisi = "Penurunan"
+    st.markdown(
+        f"""
+        <div style="
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            text-align: justify;">
+            <strong>Keterangan:</strong> Grafik di atas menunjukkan tren PM2.5 berdasarkan data runtun waktu di {selected_station} pada periode {selected_month}, {selected_year} mengalami {kondisi}. Hal ini dapat dilihat dari slope yang diperoleh pada periode tersebut.
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # Kolom 2 : Heatmap
 with col2:
